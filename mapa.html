@@ -20,7 +20,24 @@
     <h1 class="title">Hello World!</h1>
     <button class="button" onclick="vibrate()">Wibracje-test</button>
     <a href="mapa.html"><button class="button">Mapa</button></a>
+    <p>Twoja lokalizacja:</p>
+    <div id="coords"></div>
   </div>
   <script src="js/main.js"></script>
+  <script>
+    function showPosition(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      document.getElementById("coords").innerHTML = `Szerokość: ${latitude}, Długość: ${longitude}`;
+    }
+    function showError(error) {
+      document.getElementById("coords").innerHTML = "Nie udało się pobrać Twojej lokalizacji.";
+    }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      document.getElementById("coords").innerHTML = "Twoja przeglądarka nie obsługuje Geolocation.";
+    }
+  </script>
 </body>
 </html>
