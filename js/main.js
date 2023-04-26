@@ -3,3 +3,6 @@
       navigator.serviceWorker.register('/sw.js');
     });
   }
+  function vibrate() {
+    window.navigator.vibrate([200, 100, 200]);
+  }
