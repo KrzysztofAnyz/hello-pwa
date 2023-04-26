@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Mapa</title>
+  <title>Lokalizacja</title>
   <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="images/hello-icon-152.png">
@@ -20,9 +21,13 @@
     <h1 class="title">Hello World!</h1>
     <button class="button" onclick="vibrate()">Wibracje-test</button>
     <a href="mapa.html"><button class="button">Mapa</button></a>
+    <a href="newwindow.html"><button class="button">NEW WINDOW TEST</button></a>
     <p>Twoja lokalizacja:</p>
     <div id="coords"></div>
+    <div id="map" style="height: 400px; width: 400px;"></div>
   </div>
+  <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA==" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -19,3 +19,19 @@
   } else {
     document.getElementById("coords").innerHTML = "Twoja przeglądarka nie obsługuje Geolocation.";
   }
+
+  
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var map = L.map('map').setView([position.coords.latitude, position.coords.longitude], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+    L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+  });
