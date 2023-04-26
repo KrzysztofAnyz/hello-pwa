@@ -4,5 +4,5 @@
     });
   }
   function vibrate() {
-    window.navigator.vibrate([200, 100, 200]);
+    window.navigator.vibrate([200]);
   }
