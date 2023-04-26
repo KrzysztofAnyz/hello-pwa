@@ -4,7 +4,7 @@
     });
   }
   function vibrate() {
-    window.navigator.vibrate([200, 100, 200, 100, 200, 100, 1000, 100, 1000, 100, 1000, 100, 200, 100, 200, 100, 200]);
+    window.navigator.vibrate([200]);
   }
   function showPosition(position) {
     const latitude = position.coords.latitude;
