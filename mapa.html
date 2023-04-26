@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Hello World</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="white"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Hello World">
-  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <title>Mapa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="sha512-vdXoFTojKpGrUnsXYJf/mwqV6W0F6K0JQOHD+6hzfz9lRrJf1V7jKtzFw0VQbLBCzvKj2Q2Gh9MySMWzjgCvew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    #mapid { height: 400px; }
+  </style>
 </head>
-<body class="fullscreen">
-  <div class="container">
-    
-    <button onclick="vibrate()">Wibracje-test</button>
-  </div>
-  <script src="js/main.js"></script>
+<body>
+  <div id="mapid"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js" integrity="sha512-MbKjJkV7hQxI49ELVX+o3a8oVZom3f0IwV7TpD4au4iOlgKjDCP4oBzDKsT6T0E6UJAb6UwFT6UAGPOWd/5AEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const mapid = L.map('mapid').setView([52.2297, 21.0122], 13); // ustawienie początkowej lokalizacji i powiększenia mapy
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(mapid);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        L.marker([latitude, longitude]).addTo(mapid); // dodanie znacznika na mapie w pozycji użytkownika
+        mapid.setView([latitude, longitude], 13); // ustawienie widoku na pozycji użytkownika
+      });
+    } else {
+      console.log('Twoja przeglądarka nie obsługuje geolokalizacji');
+    }
+  </script>
 </body>
 </html>
