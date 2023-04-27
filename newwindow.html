@@ -38,12 +38,12 @@
             }
           }
         });
-        let currentLocation = {
+      }
+      let currentLocation = {
   lat: 0,
   lng: 0
-  };
-      }
-      function getCurrentLocation() {
+};
+function getCurrentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       currentLocation.lat = position.coords.latitude;
