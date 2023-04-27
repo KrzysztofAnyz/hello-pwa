@@ -53,12 +53,11 @@
 
         // Define the request parameters
         var request = {
-          query: 'Mechanic',
           location: map.getCenter(),
           radius: '500',
-           type: ['car_repair'],
-          maxResults: 10
-          };
+          types: ['car_repair'],
+          keyword: 'mechanic'
+        };
 
         // Search for the mechanics
         service.textSearch(request, function(results, status) {
