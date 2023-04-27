@@ -23,7 +23,7 @@
       <a href="mapa.html"><button class="button">Mapa</button></a>
       <a href="newwindow.html"><button class="button">NEW WINDOW TEST2</button></a>
     </div>
-    <div id="map" style="height: 80%; width: 100%;"></div>
+    <div id="map" style="height: 75%; width: 100%;"></div>
     <script>
       // Initialize the map and icon
       var map, marker;
@@ -53,9 +53,10 @@
 
         // Define the request parameters
         var request = {
-          query: 'Mechanic',
+          query: 'car repair',
           location: map.getCenter(),
-          radius: '500'
+          radius: '500',
+          type: ['car_repair']
         };
 
         // Search for the mechanics
