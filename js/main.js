@@ -24,6 +24,21 @@ function showPosition(position) {
   }).addTo(map);
   L.marker([latitude, longitude]).addTo(map);
 }
+function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var currentLocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      initMap(currentLocation);
+    }, function() {
+      // Handle Geolocation error
+    });
+  } else {
+    // Browser doesn't support Geolocation
+  }
+}
 
 function showError(error) {
   document.getElementById("coords").innerHTML = "Nie udało się pobrać Twojej lokalizacji.";
