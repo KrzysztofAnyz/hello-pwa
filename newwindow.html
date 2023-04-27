@@ -11,7 +11,7 @@
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: getCurrentLocation(),
+          center: currentLocation,
           zoom: 13
         });
 
@@ -38,7 +38,24 @@
             }
           }
         });
+        let currentLocation = {
+  lat: 0,
+  lng: 0
+  };
       }
+      function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      currentLocation.lat = position.coords.latitude;
+      currentLocation.lng = position.coords.longitude;
+      initMap();
+    }, function() {
+      // Handle Geolocation error
+    });
+  } else {
+    // Browser doesn't support Geolocation
+  }
+}
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDw3sqV8xEFO_AH0xy4ZnzX2CfFWTXLk&libraries=places&callback=initMap"></script>
   </body>
