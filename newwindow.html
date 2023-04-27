@@ -2,7 +2,18 @@
 <html>
   <head>
     <title>Google Maps JavaScript API Example</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="white"/>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Hello World">
+  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDw3sqV8xEFO_AH0xy4ZnzX2CfFWTXLk&libraries=places"></script>
   </head>
   <body>
@@ -12,7 +23,7 @@
       <a href="mapa.html"><button class="button">Mapa</button></a>
       <a href="newwindow.html"><button class="button">NEW WINDOW TEST2</button></a>
     </div>
-    <div id="map" style="height: 800px; width: 400px;"></div>
+    <div id="map" style="height: 1200px; width: 900px;"></div>
     <script>
       // Initialize the map
       var map;
