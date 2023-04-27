@@ -1,29 +1,45 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>New window</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" integrity="1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="white"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Hello World">
-  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-</head>
-<body class="fullscreen">
-  <div class="container">
-    <h1 onclick="window.location.href = 'index.html'" class="title">New WINDOW</h1>
-    <button class="button" onclick="vibrate()">Wibracje-test</button>
-    <a href="mapa.html"><button class="button">Mapa</button></a>
-    <a href="newwindow.html"><button class="button">NEW WINDOW TEST</button></a>
-  </div>
-  <script src="js/main.js"></script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Maps JavaScript API Example</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  </head>
+  <body>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <script>
+      // Initialize the map
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 37.7749, lng: -122.4194},
+          zoom: 13
+        });
 
-</body>
+        // Create a places service object to search for places
+        var service = new google.maps.places.PlacesService(map);
+
+        // Define the request parameters
+        var request = {
+          query: 'restaurants',
+          location: map.getCenter(),
+          radius: '500'
+        };
+
+        // Search for the restaurants
+        service.textSearch(request, function(results, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              // Create a marker for each restaurant
+              var marker = new google.maps.Marker({
+                position: results[i].geometry.location,
+                map: map,
+                title: results[i].name
+              });
+            }
+          }
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+  </body>
 </html>
