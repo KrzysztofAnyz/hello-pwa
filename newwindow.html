@@ -25,29 +25,36 @@
     </div>
     <div id="map" style="height: 80%; width: 100%;"></div>
     <script>
-      // Initialize the map
-      var map;
+      // Initialize the map and icon
+      var map, marker;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: currentLocation,
           zoom: 13
         });
-    
+
+        // Create a marker for the current location
+        marker = new google.maps.Marker({
+          position: currentLocation,
+          map: map,
+          title: "You are here"
+        });
+
         // Create a places service object to search for places
         var service = new google.maps.places.PlacesService(map);
-    
+
         // Define the request parameters
         var request = {
           query: 'Mechanic',
           location: map.getCenter(),
           radius: '500'
         };
-    
-        // Search for the restaurants
+
+        // Search for the mechanics
         service.textSearch(request, function(results, status) {
           if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
-              // Create a marker for each restaurant
+              // Create a marker for each mechanic
               var marker = new google.maps.Marker({
                 position: results[i].geometry.location,
                 map: map,
@@ -57,31 +64,24 @@
           }
         });
       }
-      
       let currentLocation = {
-         lat: 0,
-         lng: 0
-        };
-
-function getCurrentLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      currentLocation.lat = position.coords.latitude;
-      currentLocation.lng = position.coords.longitude;
-      var currentLocationMarker = new google.maps.Marker({
-        position: currentLocation,
-        map: map,
-        title: 'You are here!'
-      });
-      map.setCenter(currentLocation);
-      initMap();
-    }, function() {
-      // Handle Geolocation error
-    });
-  } else {
-    // Browser doesn't support Geolocation
-  }
-}
+        lat: 0,
+        lng: 0
+      };
+      function getCurrentLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            currentLocation.lat = position.coords.latitude;
+            currentLocation.lng = position.coords.longitude;
+            initMap();
+          }, function() {
+            // Handle Geolocation error
+          });
+        } else {
+          // Browser doesn't support Geolocation
+        }
+      }
+    </script>
       getCurrentLocation();
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDw3sqV8xEFO_AH0xy4ZnzX2CfFWTXLk&libraries=places&callback=initMap"></script>
