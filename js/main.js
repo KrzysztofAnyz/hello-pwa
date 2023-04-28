@@ -51,8 +51,8 @@ notifyButton.addEventListener('click', function() {
   Notification.requestPermission().then(function(permission) {
     if (permission === 'granted') {
       // Create a new notification
-      const notification = new Notification('Notification Title', {
-        body: 'Notification body text',
+      const notification = new Notification('Powiadomienie tytuł', {
+        body: 'Powiadomienie ',
         icon: 'path/to/notification-icon.png',
       });
     }
