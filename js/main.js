@@ -35,3 +35,26 @@
     }).addTo(map);
     L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
   });
+
+  // Get the notify button element
+const notifyButton = document.getElementById('notify-button');
+
+// Add a click event listener to the button
+notifyButton.addEventListener('click', function() {
+  // Check if the browser supports notifications
+  if (!('Notification' in window)) {
+    alert('This browser does not support desktop notifications');
+    return;
+  }
+
+  // Request permission to show notifications
+  Notification.requestPermission().then(function(permission) {
+    if (permission === 'granted') {
+      // Create a new notification
+      const notification = new Notification('Notification Title', {
+        body: 'Notification body text',
+        icon: 'path/to/notification-icon.png',
+      });
+    }
+  });
+});
