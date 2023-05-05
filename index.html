@@ -1,28 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Hello World</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="images/hello-icon-152.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="white"/>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Hello World">
-  <meta name="msapplication-TileImage" content="images/hello-icon-144.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-</head>
-<body class="fullscreen">
-  <div class="container">
-    <h1 onclick="window.location.href = 'index.html'" class="title">Hello World!</h1>
-    <button class="button" onclick="vibrate()">Wibracje-test</button>
-    <a href="mapa.html"><button class="button">Mapa</button></a>
-    <button class="button" id="notify-button">Show Notification</button>
-    <a href="newwindow.html"><button class="button">NEW WINDOW TEST2</button></a>
-  </div>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index-593a8215.js"></script>
+    <link rel="stylesheet" href="/assets/index-8c95c468.css">
+  <link rel="manifest" href="/manifest.webmanifest"></head>
+  <body>
+    <div id="app"></div>
+    
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJDw3sqV8xEFO_AH0xy4ZnzX2CfFWTXLk&libraries=places&callback=initMap"
+></script>
+  </body>
 </html>
